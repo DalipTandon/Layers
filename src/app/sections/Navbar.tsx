@@ -23,7 +23,7 @@ export default function Navbar() {
             />
           </div>
           <div className="lg:flex justify-center items-center hidden">
-            <nav className="flex gap-6 font-medium">
+            <nav className="flex gap-6 mr-4 font-medium">
               {navLinks.map((link) => (
                 <a href={link.href} key={link.label}>
                   {link.label}
@@ -48,7 +48,7 @@ export default function Navbar() {
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
-            <Button variant="secondary" className="hidden md:inline-flex items-center">Log in</Button>
+            <Button variant="secondary" className="hidden md:inline-flex items-center ml-3">Log in</Button>
             <Button variant="primary" className="hidden md:inline-flex items-center">Sign Up</Button>
           </div>
         </div>
