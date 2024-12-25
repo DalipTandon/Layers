@@ -1,14 +1,22 @@
+"use client"
 import { twMerge } from "tailwind-merge";
 import { type IntegrationsType } from "../sections/Integrations";
 import Image from "next/image";
-
+import { AnimatePresence,motion } from "framer-motion";
+import { Fragment } from "react";
+import { reverse } from "dns";
 export default function IntegrationsColumn(props: {
   integrations: IntegrationsType;
   className?:string;
+  reverse?:boolean;
 }) {
-  const { integrations,className } = props;
+  const { integrations,className ,reverse} = props;
   return (
-    <div className={twMerge("flex flex-col gap-4 pb-4",className)}>
+    <motion.div initial={{y:reverse?"-50%":"0"}} animate={{
+      y:reverse?"0" : "-50%"
+    }} transition={{duration:15 , repeat:Infinity,ease:"linear"}} className={twMerge("flex flex-col gap-4 pb-4",className)}>
+      {Array.from({length:2}).map((_,i)=>(
+        <Fragment key={i}>
       {integrations.map((integration) => (
         <div
           className="bg-neutral-900 border border-white/10 rounded-3xl p-6"
@@ -27,6 +35,8 @@ export default function IntegrationsColumn(props: {
           </p>
         </div>
       ))}
-    </div>
+        </Fragment>
+      ))}
+    </motion.div>
   );
 }
